@@ -6,9 +6,15 @@
 </p>
 
 <p>
+  <strong>Tarefas:</strong>
+  <%= @list.tasks.size %>
+</p>
+
+<p>
   <strong>Finished:</strong>
   <%= @list.finished %>
 </p>
 
 <%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Tarefas', list_tasks_path(@list) %> |
 <%= link_to 'Back', lists_path %>
