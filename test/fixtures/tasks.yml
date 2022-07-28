@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  list: one
+  done: false
+  desscription: MyString
+
+two:
+  list: two
+  done: false
+  desscription: MyString

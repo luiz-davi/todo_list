@@ -3,7 +3,7 @@ class ListsController < ApplicationController
 
   # GET /lists or /lists.json
   def index
-    @lists = current_user.lists.where(finished: false).order(created_at: :desc)
+    @lists = current_user.lists.where(finished: false).order(created_at: :asc)
   end
 
   # GET /lists/1 or /lists/1.json
@@ -49,7 +49,7 @@ class ListsController < ApplicationController
 
   # DELETE /lists/1 or /lists/1.json
   def destroy
-    @list.update(finished: true)
+    @list.destroy
 
     respond_to do |format|
       format.html { redirect_to lists_url, notice: "List was successfully destroyed." }
