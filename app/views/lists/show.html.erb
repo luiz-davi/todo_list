@@ -1,9 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @list.name %>
-</p>
+
+  <h1><%= @list.name %></h1>
 
 <p>
   <strong>Tarefas:</strong>
@@ -11,10 +9,36 @@
 </p>
 
 <p>
-  <strong>Finished:</strong>
+  <strong>Finalizada?:</strong>
   <%= @list.finished %>
 </p>
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Tarefas', list_tasks_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<%= link_to 'Editar', edit_list_path(@list) %>
+
+<br>
+
+<h1>Tarefas</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Concluida?</th>
+      <th>Descrição</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.done %></td>
+        <td><%= task.desscription %></td>
+        <td><%= link_to 'Ver', [@list, task] %></td>
+        <td><%= link_to 'Editar', edit_list_task_path(@list, task) %></td>
+        <td><%= link_to 'Excluir', [@list, task] , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Nova tarefa', new_list_task_path(@list) %> |
+<%= link_to 'Home', lists_path %>

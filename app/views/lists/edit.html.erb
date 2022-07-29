@@ -1,6 +1,6 @@
-<h1>Editing List</h1>
+<h1>Editar Lista: <%= @list.name %></h1>
 
-<%= render 'form', list: @list %>
+<%= render 'edit', list: @list %>
 
-<%= link_to 'Show', @list %> |
-<%= link_to 'Back', lists_path %>
+<%= link_to 'Ver', list_path(@list) %> | 
+<%= link_to 'Home', root_path %>

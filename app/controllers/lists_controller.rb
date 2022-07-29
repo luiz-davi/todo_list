@@ -6,8 +6,13 @@ class ListsController < ApplicationController
     @lists = current_user.lists.where(finished: false).order(created_at: :asc)
   end
 
+  def finishedies
+    @finishedies = current_user.lists.where(finished: true)
+  end
+
   # GET /lists/1 or /lists/1.json
   def show
+    @tasks = @list.tasks.order(created_at: :asc)
   end
 
   # GET /lists/new
@@ -65,6 +70,6 @@ class ListsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def list_params
-      params.require(:list).permit(:name)
+      params.require(:list).permit(:name, :finished)
     end
 end
