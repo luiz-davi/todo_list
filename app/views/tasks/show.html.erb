@@ -1,19 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>List:</strong>
-  <%= @task.list %>
-</p>
+<h1><%= @task.desscription %></h1>
 
 <p>
-  <strong>Done:</strong>
+  <strong>Nome da Lista:</strong>
+  <%= @task.list.name %>
+</p>
+
+
+<p>
+  <strong>Concluida?:</strong>
   <%= @task.done %>
 </p>
 
-<p>
-  <strong>Desscription:</strong>
-  <%= @task.desscription %>
-</p>
 
 <%= link_to 'Edit', edit_list_task_path(@list, @task) %> |
-<%= link_to 'Back', list_tasks_path(@list) %>
+<%= link_to 'Back', list_path(@list) %>

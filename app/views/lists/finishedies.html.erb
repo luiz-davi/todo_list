@@ -1,23 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listas</h1>
+<h1>Finalizadas</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Tarefas</th>
-      <th>Finished</th>
+      <th>Finalizada?</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @lists.each do |list| %>
+    <% @finishedies.each do |list| %>
       <tr>
-        <td><%= link_to "#{list.name}", list %></td>
+        <td><%= list.name %></td>
         <td><%= list.tasks.size %></td>
         <td><%= list.finished %></td>
+        <td><%= link_to 'Ver', list %></td>
         <td><%= link_to 'Editar', edit_list_path(list) %></td>
         <td><%= link_to 'Excluir', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -25,6 +26,5 @@
   </tbody>
 </table>
 
-<br>
+<%= link_to 'Home', lists_path %>
 
-<%= link_to 'Nova lista', new_list_path %>
