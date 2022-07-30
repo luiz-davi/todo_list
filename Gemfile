@@ -65,3 +65,4 @@ gem 'devise'
 
 gem 'bootstrap', '~> 5.2.0'
 gem "jquery-rails"
+gem 'terser', '~> 1.1', '>= 1.1.1'
