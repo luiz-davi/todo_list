@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_list
-  before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_task, only: %i[ show edit update destroy enable desable]
 
   # GET /tasks/1 or /tasks/1.json
   def show
@@ -53,10 +53,23 @@ class TasksController < ApplicationController
     end
   end
 
+  def enable
+    @task.update(done: false)
+
+    redirect_to list_path(@list)
+  end
+
+  def desable
+    @task.update(done: true)
+
+    redirect_to list_path(@list)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = @list.tasks.find(params[:id])
+      id = params[:id] || params[:task_id]
+      @task = @list.tasks.find(id)
     end
 
     def set_list

@@ -1,3 +1,10 @@
-<%= link_to 'Editar', edit_user_registration_path %> | 
-<%= link_to 'Sair', destroy_user_session_path, method: :delete%> | 
-<%= link_to 'Finalizadas', finishedies_path %>
+<nav class="nav justify-content-center">
+  <a class="btn btn-outline-info me-2" role="buttom" type="button" href="/">Home</a>
+  <a class="btn btn-outline-dark me-2" role="buttom" type="button" href="/users/edit">Eu</a>
+  <a class="btn btn-outline-dark me-2" role="buttom" type="button" href="/finishedies">Finalizadas</a>
+  <a class="btn btn-outline-dark me-2" role="buttom" type="button" data-method="delete" href="/users/sign_out">Sair</a>
+</nav>
+
+<%# /users/edit %>
+<%# /users/sign_in %>
+<%# /finishedies %>

@@ -1,6 +1,16 @@
-<h1>Editar tarefa: <%= @task.desscription %> </h1>
+<div class="card" style="text-align:center;padding:35px;margin-left:300px;margin-right:300px;margin-top:100px">
 
-<%= render 'form', task: @task %>
+  <h1>Editar tarefa: <%= @task.desscription %> </h1><br>
 
-<%= link_to 'Ver', [@list, @task] %> |
-<%= link_to 'Voltar', list_path(@list) %>
+  <%= render 'form', task: @task %><br>
+
+  <a href=<%="/lists/#{@list.id}/tasks/#{@task.id}"%> class="btn btn-outline-info" tabindex="-1" role="button"
+   style="margin-left:200px;margin-right:200px;margin-bottom:10px">
+    Ver
+  </a>
+  <a href=<%="/lists/#{@list.id}"%> class="btn btn-outline-info" tabindex="-1" role="button"
+   style="margin-left:200px;margin-right:200px;margin-bottom:10px">
+    Voltar
+  </a>
+
+</div>

@@ -1,6 +1,14 @@
-<h1>Editar Lista: <%= @list.name %></h1>
+<div class="card" style="text-align:center;padding:35px;margin-left:300px;margin-right:300px;margin-top:100px">
+  <h1>Editar Lista: <%= @list.name %></h1>
 
-<%= render 'edit', list: @list %>
+  <%= render 'edit', list: @list %>
 
-<%= link_to 'Ver', list_path(@list) %> | 
-<%= link_to 'Home', root_path %>
+  <a href=<%="/lists/#{@list.id}"%> class="btn btn-outline-info" tabindex="-1" role="button"
+   style="margin-left:200px;margin-right:200px;margin-bottom:10px">
+    Ver
+  </a>
+
+
+  <%= link_to 'Voltar', :back %>
+
+</div>
