@@ -1,18 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div style="margin-left:50px;margin-right:50px;margin-bottom:100px">
 
-<h1><%= @task.desscription %></h1>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nome da Lista:</strong>
-  <%= @task.list.name %>
-</p>
+  <h1><%= @task.desscription %></h1>
 
-
-<p>
-  <strong>Concluida?:</strong>
-  <%= @task.done %>
-</p>
+  <p>
+    <strong>Nome da Lista:</strong>
+    <%= @task.list.name %>
+  </p>
 
 
-<%= link_to 'Edit', edit_list_task_path(@list, @task) %> |
-<%= link_to 'Back', list_path(@list) %>
+  <p>
+    <strong>Concluida?:</strong>
+    <%= @task.done %>
+  </p>
+
+
+  <a class="btn btn-primary" href=<%="#{@task.id}/edit"%> role="button">
+    Editar
+  </a>
+
+
+  <a href=<%="/lists/#{@list.id}"%> class="btn btn-outline-info" tabindex="-1" role="button">
+    Voltar
+  </a>
+</div>

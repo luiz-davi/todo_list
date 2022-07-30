@@ -1,44 +1,107 @@
-<p id="notice"><%= notice %></p>
+<div style="margin-left:50px;margin-right:50px;margin-bottom:100px">
+
+  <div class="card" style="text-align:center;padding:35px;margin-left:300px;margin-right:300px;margin-top:50px">
+    <p id="notice"><%= notice %></p>
 
 
-  <h1><%= @list.name %></h1>
+    <h1><%= @list.name %></h1>
 
-<p>
-  <strong>Tarefas:</strong>
-  <%= @list.tasks.size %>
-</p>
+    <p>
+      <strong>Tarefas: </strong>
+      <%= @list.tasks.size %>
+    </p>
 
-<p>
-  <strong>Finalizada?:</strong>
-  <%= @list.finished %>
-</p>
+    <p>
+      <strong>Tarefas pendentes: </strong>
+      <%= @list.tasks.where(done: false).size %>
+    </p>
 
-<%= link_to 'Editar', edit_list_path(@list) %>
+    <p>
+      <strong>Tarefas concluidas: </strong>
+      <%=  @list.tasks.where(done: true).size %>
+    </p>
 
-<br>
+    <p>
+      <strong>Finalizada? : </strong>
+      <%= @list.finished %>
+    </p>
 
-<h1>Tarefas</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Concluida?</th>
-      <th>Descrição</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.done %></td>
-        <td><%= task.desscription %></td>
-        <td><%= link_to 'Ver', [@list, task] %></td>
-        <td><%= link_to 'Editar', edit_list_task_path(@list, task) %></td>
-        <td><%= link_to 'Excluir', [@list, task] , method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <a class="btn btn-primary" href=<%="#{@list.id}/edit"%> role="button">
+      Editar
+    </a>
+    <p></p>
+    <a href=<%="#{@list.id}/tasks/new"%> class="btn btn-outline-success" tabindex="-1" role="button">
+      Nova Tarefa
+    </a>
+    <% unless @list.finished%>
+      <p></p>
+      <a href=<%="/lists/#{@list.id}/finished"%>  data-confirm="Tem certeza?" data-method="patch" 
+        class="btn btn-outline-danger" tabindex="-1" role="button">
+        Finalizar Lista
+      </a>
+    <% else %>
+      <p></p>
+      <a href=<%="/lists/#{@list.id}/enable"%>  data-confirm="Tem certeza?" data-method="patch" 
+        class="btn btn-outline-warning" tabindex="-1" role="button">
+        Reativar lista
+      </a>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  
+  <br><br>
+  
+  
+  <% unless @tasks.blank? %>
+    <h1>Tarefas</h1>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Concluida?</th>
+          <th scope="col">Descrição</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
 
-<%= link_to 'Nova tarefa', new_list_task_path(@list) %> |
-<%= link_to 'Home', lists_path %>
+      <tbody>
+        <% @tasks.each do |task| %>
+          <tr>
+            <td><%= task.done %></td>
+            <td><%= link_to task.desscription, [@list, task] %></td>
+            <% unless task.done %>
+              <td>
+                <a class="btn btn-outline-success" data-method="patch" href=<%="#{@list.id}/tasks/#{task.id}/desable"%> role="button">
+                  Finalizar
+                </a>
+              </td>
+            <% else %>
+              <td>
+                <a class="btn btn-outline-warning" data-method="patch" href=<%="#{@list.id}/tasks/#{task.id}/enable"%> role="button">
+                  Reativar
+                </a>
+              </td>
+            <% end %>
+            <td>
+              <a class="btn btn-primary" href=<%="#{@list.id}/tasks/#{task.id}/edit"%> role="button">
+                Editar
+              </a>
+            </td>
+            <td>
+              <a class="btn btn-danger" role="button" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href=<%="#{@list.id}/tasks/#{task.id}"%>>
+                  Excluir
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div style="text-align:center"> Não há tarefas criadas</div>
+  <% end %>
+
+  <br><br>
+   
+</div>
+
+
+<%# /lists/2/tasks/2/edit %>

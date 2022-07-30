@@ -1,5 +1,9 @@
-<h1>Nova Tarefa</h1>
+<div class="card" style="text-align:center;padding:35px;margin-left:300px;margin-right:300px;margin-top:100px">
 
-<%= render 'form', task: @task %>
+  <h1>Nova Tarefa</h1>
 
-<%= link_to 'Voltar', list_path(@list) %>
+  <%= render 'form', task: @task %>
+
+  <%= link_to 'Voltar', :back %>
+
+</div>

@@ -1,5 +1,4 @@
 class Task < ApplicationRecord
-  after_update :check_list
   belongs_to :list
 
   def check_list
@@ -9,4 +8,5 @@ class Task < ApplicationRecord
 
     list.update!(finished: true)
   end
+
 end

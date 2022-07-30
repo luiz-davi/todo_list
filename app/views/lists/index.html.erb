@@ -1,30 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listas</h1>
+<div style="margin:50px;text-align:center">
+  <h1>Afazeres</h1><br>
+  <% unless @lists.blank? %>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">NOME</th>
+          <th scope="col">FINALIZADAS</th>
+          <th scope="col">TAREFAS TOTAIS</th>
+          <th scope="col">TAREFAS PENDENTES</th>
+          <th scope="col">TAREFAS CONCLUIDAS</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @lists.each do |list| %>
+          <tr>
+            <td><%= link_to "#{list.id}", list %></td>
+            <td><%= link_to "#{list.name}", list %></td>
+            <td><%= list.finished %></td>
+            <td><%= list.tasks.size %></td>
+            <td><%= list.tasks.where(done: false).size %></td>
+            <td><%= list.tasks.where(done: true).size %></td>
+            <td>
+              <a class="btn btn-primary" href=<%="lists/#{list.id}/edit"%> role="button">Editar</a>
+            </td>
+            <td>
+              <a class="btn btn-danger" role="button" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href=<%="/lists/#{list.id}"%>>
+                Excluir
+              </a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div style="text-align:center"> Não há listas cadastradas</div>
+  <% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Tarefas</th>
-      <th>Finished</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div style="margin-left:50px">
+  <a href="lists/new" class="btn btn-outline-success" tabindex="-1" role="button">
+    Nova Lista
+  </a>
+</div>
 
-  <tbody>
-    <% @lists.each do |list| %>
-      <tr>
-        <td><%= link_to "#{list.name}", list %></td>
-        <td><%= list.tasks.size %></td>
-        <td><%= list.finished %></td>
-        <td><%= link_to 'Editar', edit_list_path(list) %></td>
-        <td><%= link_to 'Excluir', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Nova lista', new_list_path %>
