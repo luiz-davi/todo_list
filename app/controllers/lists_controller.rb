@@ -3,11 +3,15 @@ class ListsController < ApplicationController
 
   # GET /lists or /lists.json
   def index
-    @lists = current_user.lists.where(finished: false).order(created_at: :asc)
+    @lists = current_user.lists.order(created_at: :asc)
   end
 
   def finishedies
     @finishedies = current_user.lists.where(finished: true)
+  end
+
+  def open
+    @open = current_user.lists.where(finished: false).order(created_at: :asc)
   end
 
   # GET /lists/1 or /lists/1.json
@@ -65,13 +69,13 @@ class ListsController < ApplicationController
   def finished
     @list.update(finished: true)
 
-    redirect_to finishedies_path
+    redirect_to list_finishedies_path
   end
 
   def enable
     @list.update(finished: false)
 
-    redirect_to root_path
+    redirect_to list_open_path
   end
 
   private

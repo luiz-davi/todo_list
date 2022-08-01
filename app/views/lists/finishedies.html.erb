@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<div style="margin:50px">
+<div style="margin:50px;text-align:center">
+  <h1>Afazeres Finalizados</h1>
+  <a href="/lists/new" class="btn btn-outline-success" tabindex="-1" role="button">
+    Nova Lista
+  </a><br><br>
   <% unless @finishedies.blank? %>
     <table class="table table-sm">
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Finalizada</th>
-          <th scope="col">Tarefas</th>
+          <th scope="col">NOME</th>
+          <th scope="col">STATUS</th>
+          <th scope="col">TAREFAS</th>
+          <th scope="col"></th>
           <th scope="col"></th>
           <th scope="col"></th>
         </tr>
@@ -18,11 +23,17 @@
           <tr>
             <td><%= link_to "#{list.id}", list %></td>
             <td><%= link_to "#{list.name}", list %></td>
-            <td><%= list.finished %></td>
+            <td><%= image_tag  color_status(list.finished), with: 25, height: 25 %></td>
             <td><%= list.tasks.size %></td>
             <td>
-              <a class="btn btn-primary" href=<%="lists/#{list.id}/edit"%> role="button">Editar</a>
+              <a href=<%="/lists/#{list.id}/enable"%>  data-confirm="Tem certeza?" data-method="patch" 
+                class="btn btn-outline-warning" tabindex="-1" role="button">
+                Reativar lista
+              </a>
             </td>
+            <td>
+              <a class="btn btn-primary" href=<%="/lists/#{list.id}/edit"%> role="button">Editar</a>
+            </td>            
             <td>
               <a class="btn btn-danger" role="button" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href=<%="/lists/#{list.id}"%>>
                 Excluir
@@ -33,7 +44,7 @@
       </tbody>
     </table>
   <% else %>
-    <div style="text-align:center"> Não há listas finalizadas</div>
+    <div style="text-align:center"> Não há listas finalizadas!</div>
   <% end %>
 
 </div>
