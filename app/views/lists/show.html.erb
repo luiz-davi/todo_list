@@ -23,7 +23,7 @@
 
     <p>
       <strong>Finalizada? : </strong>
-      <%= @list.finished %>
+      <%= image_tag  color_status(@list.finished), with: 25, height: 25 %>
     </p>
 
     <a class="btn btn-primary" href=<%="#{@list.id}/edit"%> role="button">
@@ -60,27 +60,21 @@
           <th scope="col">Descrição</th>
           <th scope="col"></th>
           <th scope="col"></th>
+          <th scope="col"></th>
+
         </tr>
       </thead>
 
       <tbody>
         <% @tasks.each do |task| %>
           <tr>
-            <td><%= task.done %></td>
+            <td><%= image_tag  color_status(task.done), with: 25, height: 25 %></td>
             <td><%= link_to task.desscription, [@list, task] %></td>
-            <% unless task.done %>
-              <td>
-                <a class="btn btn-outline-success" data-method="patch" href=<%="#{@list.id}/tasks/#{task.id}/desable"%> role="button">
-                  Finalizar
-                </a>
-              </td>
-            <% else %>
-              <td>
-                <a class="btn btn-outline-warning" data-method="patch" href=<%="#{@list.id}/tasks/#{task.id}/enable"%> role="button">
-                  Reativar
-                </a>
-              </td>
-            <% end %>
+            <td>
+              <a class=<%= "btn btn-outline-#{button_option_task(task.done)}" %> data-method="patch" href=<%="#{@list.id}/tasks/#{task.id}/#{action_task(task.done)}"%> role="button">
+                <%= frase_option_task(task.done)%>
+              </a>
+            </td>
             <td>
               <a class="btn btn-primary" href=<%="#{@list.id}/tasks/#{task.id}/edit"%> role="button">
                 Editar

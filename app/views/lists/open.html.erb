@@ -1,36 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 <div style="margin:50px;text-align:center">
-  
-  <h1>Afazeres</h1>
-  <a href="lists/new" class="btn btn-outline-success" tabindex="-1" role="button">
+  <h1>Afazeres Abertos</h1>
+  <a href="/lists/new" class="btn btn-outline-success" tabindex="-1" role="button">
     Nova Lista
   </a><br><br>
-  <% unless @lists.blank? %>
+  <% unless @open.blank? %>
     <table class="table table-sm">
       <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">NOME</th>
           <th scope="col">STATUS</th>
-          <th scope="col">TAREFAS TOTAIS</th>
-          <th scope="col">TAREFAS PENDENTES</th>
-          <th scope="col">TAREFAS CONCLUIDAS</th>
+          <th scope="col">TAREFAS</th>
+          <th scope="col"></th>
           <th scope="col"></th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        <% @lists.each do |list| %>
+        <% @open.each do |list| %>
           <tr>
             <td><%= link_to "#{list.id}", list %></td>
             <td><%= link_to "#{list.name}", list %></td>
             <td><%= image_tag  color_status(list.finished), with: 25, height: 25 %></td>
             <td><%= list.tasks.size %></td>
-            <td><%= list.tasks.where(done: false).size %></td>
-            <td><%= list.tasks.where(done: true).size %></td>
             <td>
-              <a class="btn btn-primary" href=<%="lists/#{list.id}/edit"%> role="button">Editar</a>
+              <a href=<%="/lists/#{list.id}/finished"%>  data-confirm="Tem certeza?" data-method="patch" 
+                class="btn btn-outline-danger" tabindex="-1" role="button">
+                Finalizar lista
+              </a>
+            </td>
+            <td>
+              <a class="btn btn-primary" href=<%="/lists/#{list.id}/edit"%> role="button">Editar</a>
             </td>
             <td>
               <a class="btn btn-danger" role="button" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href=<%="/lists/#{list.id}"%>>
@@ -42,15 +44,8 @@
       </tbody>
     </table>
   <% else %>
-    <div style="text-align:center"> Não há listas cadastradas!</div>
+    <div style="text-align:center"> Não há listas abertas!</div>
   <% end %>
 
-  <div style="text-align:left">
-    <a href="lists/new" class="btn btn-outline-success" tabindex="-1" role="button">
-      Nova Lista
-    </a>
-  </div>
 </div>
-
-
 
