@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div style="margin:50px;text-align:center">
   
   <h1>Afazeres</h1>
@@ -41,15 +39,16 @@
         <% end %>
       </tbody>
     </table>
+    <div style="text-align:left">
+      <a href="lists/new" class="btn btn-outline-success" tabindex="-1" role="button">
+        Nova Lista
+      </a>
+    </div>
   <% else %>
     <div style="text-align:center"> Não há listas cadastradas!</div>
   <% end %>
 
-  <div style="text-align:left">
-    <a href="lists/new" class="btn btn-outline-success" tabindex="-1" role="button">
-      Nova Lista
-    </a>
-  </div>
+  
 </div>
 
 

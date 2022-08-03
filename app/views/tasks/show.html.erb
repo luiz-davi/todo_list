@@ -1,8 +1,5 @@
-<div style="margin-left:50px;margin-right:50px;margin-bottom:100px">
-
-  <p id="notice"><%= notice %></p>
-
-  <h1><%= @task.desscription %></h1>
+<div class="card" style="text-align:center;padding-bottom:35px;margin-left:400px;margin-right:400px;margin-top:50px">
+ <h1><%= @task.desscription %></h1>
 
   <p>
     <strong>Nome da Lista:</strong>
@@ -15,13 +12,13 @@
     <%= @task.done %>
   </p>
 
-
-  <a class="btn btn-primary" href=<%="#{@task.id}/edit"%> role="button">
-    Editar
-  </a>
-
-
-  <a href=<%="/lists/#{@list.id}"%> class="btn btn-outline-info" tabindex="-1" role="button">
-    Voltar
-  </a>
+  <div style="text-align:center">
+    <a class="btn btn-primary" style="width:100px;higth:100px" href=<%="#{@task.id}/edit"%> role="button">
+      Editar
+    </a>
+    <p></p>
+    <a href=<%="/lists/#{@list.id}"%> class="btn btn-outline-info" tabindex="-1" role="button" style="width:100px;higth:100px">
+      Voltar
+    </a>
+  </div>
 </div>
