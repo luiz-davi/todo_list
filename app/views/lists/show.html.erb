@@ -71,6 +71,7 @@
             <td><%= image_tag  color_status(task.done), with: 25, height: 25 %></td>
             <td><%= link_to task.desscription, [@list, task] %></td>
             <td>
+              
               <a class=<%= "btn btn-outline-#{button_option_task(task.done)}" %> data-method="patch" href=<%="#{@list.id}/tasks/#{task.id}/#{action_task(task.done)}"%> role="button">
                 <%= frase_option_task(task.done)%>
               </a>

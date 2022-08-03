@@ -24,7 +24,7 @@
       <%= f.password_field :password, autocomplete: "new-password" %>
       <% if @minimum_password_length %>
         <br />
-        <em><%= @minimum_password_length %> caraceteres mínimos</em>
+        <em>Mínimo de <%= @minimum_password_length %> caraceteres</em>
       <% end %>
     </div><br>
 
@@ -45,7 +45,7 @@
 
   <h3>Cancelar meu cadastro</h3>
 
-  <p>Infeliz? <%= button_to "Cancelar meu cadastro", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p><%= button_to "Cancelar meu cadastro", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete %></p>
 
   <%= link_to "Voltar", :back %>
 

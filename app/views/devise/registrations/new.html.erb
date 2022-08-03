@@ -17,7 +17,7 @@
     <div class="field">
       <%= f.label :Senha %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> caracteres mínimos)</em>
+      <em>(Mínimo de <%= @minimum_password_length %> caracteres)</em>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
