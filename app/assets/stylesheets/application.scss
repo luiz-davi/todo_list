@@ -19,5 +19,27 @@
   margin-top: 150px;
 }
 
+#notice_wrapper{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  .alert, .notice{
+    padding: 2.5rem 0;
+    text-align: center;
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+  }
+  .alert{
+    background-color: rgba(255, 100, 60, 0.4);
+  }
+  .notice{
+    background-color: rgba(135, 216, 211, 0.85);
+  }
+}
+
 
 

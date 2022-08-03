@@ -21,7 +21,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to list_path(@list), notice: "Task was successfully created." }
+        format.html { redirect_to list_path(@list), notice: "Tarefa foi criada com sucesso." }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to list_task_path(@list), notice: "Task was successfully updated." }
+        format.html { redirect_to list_task_path(@list), notice: "Tarefa foi atualizada com sucesso." }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -48,7 +48,7 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to list_path(@list), notice: "Task was successfully destroyed." }
+      format.html { redirect_to list_path(@list), notice: "Tarefa foi excluída com sucesso." }
       format.json { head :no_content }
     end
   end
@@ -56,13 +56,13 @@ class TasksController < ApplicationController
   def enable
     @task.update(done: false)
 
-    redirect_to list_path(@list)
+    redirect_to list_path(@list), notice: "Tarefa foi reativada com sucesso."
   end
 
   def desable
     @task.update(done: true)
 
-    redirect_to list_path(@list)
+    redirect_to list_path(@list), notice: "Tarefa foi finalizada com sucesso."
   end
 
   private

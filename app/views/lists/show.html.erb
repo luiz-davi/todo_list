@@ -1,9 +1,6 @@
 <div style="margin-left:50px;margin-right:50px;margin-bottom:100px">
 
   <div class="card" style="text-align:center;padding:35px;margin-left:300px;margin-right:300px;margin-top:50px">
-    <p id="notice"><%= notice %></p>
-
-
     <h1><%= @list.name %></h1>
 
     <p>
@@ -22,30 +19,32 @@
     </p>
 
     <p>
-      <strong>Finalizada? : </strong>
+      <strong>Status: </strong>
       <%= image_tag  color_status(@list.finished), with: 25, height: 25 %>
     </p>
 
-    <a class="btn btn-primary" href=<%="#{@list.id}/edit"%> role="button">
-      Editar
-    </a>
-    <p></p>
-    <a href=<%="#{@list.id}/tasks/new"%> class="btn btn-outline-success" tabindex="-1" role="button">
-      Nova Tarefa
-    </a>
-    <% unless @list.finished%>
-      <p></p>
-      <a href=<%="/lists/#{@list.id}/finished"%>  data-confirm="Tem certeza?" data-method="patch" 
-        class="btn btn-outline-danger" tabindex="-1" role="button">
-        Finalizar Lista
+    <div style="text-align:center">
+      <a class="btn btn-primary" style="width:200px" href=<%="#{@list.id}/edit"%> role="button">
+        Editar
       </a>
-    <% else %>
       <p></p>
-      <a href=<%="/lists/#{@list.id}/enable"%>  data-confirm="Tem certeza?" data-method="patch" 
-        class="btn btn-outline-warning" tabindex="-1" role="button">
-        Reativar lista
+      <a href=<%="#{@list.id}/tasks/new"%> class="btn btn-outline-success" style="width:200px" tabindex="-1" role="button">
+        Nova Tarefa
       </a>
-    <% end %>
+      <% unless @list.finished%>
+        <p></p>
+        <a href=<%="/lists/#{@list.id}/finished"%>  data-confirm="Tem certeza?" data-method="patch" 
+          class="btn btn-outline-danger" style="width:200px" tabindex="-1" role="button">
+          Finalizar Lista
+        </a>
+      <% else %>
+        <p></p>
+        <a href=<%="/lists/#{@list.id}/enable"%>  data-confirm="Tem certeza?" data-method="patch" 
+          class="btn btn-outline-warning" style="width:200px" tabindex="-1" role="button">
+          Reativar lista
+        </a>
+      <% end %>
+    </div>
   </div>
   
   <br><br>
@@ -56,8 +55,8 @@
     <table class="table table-sm">
       <thead>
         <tr>
-          <th scope="col">Concluida?</th>
-          <th scope="col">Descrição</th>
+          <th scope="col">STATUS</th>
+          <th scope="col">DESCRIÇÃO</th>
           <th scope="col"></th>
           <th scope="col"></th>
           <th scope="col"></th>
