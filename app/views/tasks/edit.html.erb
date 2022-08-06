@@ -4,13 +4,13 @@
 
   <%= render 'form', task: @task %><br>
 
-  <a href=<%="/lists/#{@list.id}/tasks/#{@task.id}"%> class="btn btn-outline-info" tabindex="-1" role="button"
+  <a href=<%= list_task_path(@list, @task) %> class="btn btn-outline-info" tabindex="-1" role="button"
    style="margin-left:200px;margin-right:200px;margin-bottom:10px">
     Ver
   </a>
-  <a href=<%="/lists/#{@list.id}"%> class="btn btn-outline-info" tabindex="-1" role="button"
-   style="margin-left:200px;margin-right:200px;margin-bottom:10px">
-    Voltar
+  <a href=<%= list_path(@list) %> class="btn btn-outline-info" tabindex="-1" role="button"
+     style="margin-left:200px;margin-right:200px  ">
+      Voltar
   </a>
 
 </div>

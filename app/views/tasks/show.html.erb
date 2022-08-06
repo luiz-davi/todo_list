@@ -13,11 +13,11 @@
   </p>
 
   <div style="text-align:center">
-    <a class="btn btn-primary" style="width:100px;higth:100px" href=<%="#{@task.id}/edit"%> role="button">
+    <a class="btn btn-primary" style="width:100px;higth:100px" href=<%= edit_list_task_path(@list, @task) %> role="button">
       Editar
     </a>
     <p></p>
-    <a href=<%="/lists/#{@list.id}"%> class="btn btn-outline-info" tabindex="-1" role="button" style="width:100px;higth:100px">
+    <a href=<%= list_path(@list) %> class="btn btn-outline-info" tabindex="-1" role="button" style="width:100px;higth:100px">
       Voltar
     </a>
   </div>

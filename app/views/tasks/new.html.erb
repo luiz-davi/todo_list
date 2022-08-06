@@ -5,6 +5,8 @@
 
   <%= render 'form', task: @task %>
 
-  <%= link_to 'Voltar', :back %>
-
+  <a href=<%= list_path(@list) %> class="btn btn-outline-info" tabindex="-1" role="button"
+     style="margin-left:200px;margin-right:200px  ">
+      Voltar
+  </a>
 </div>

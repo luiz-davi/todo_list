@@ -3,12 +3,9 @@
 
   <%= render 'edit', list: @list %>
 
-  <a href=<%="/lists/#{@list.id}"%> class="btn btn-outline-info" tabindex="-1" role="button"
-   style="margin-left:200px;margin-right:200px;margin-bottom:10px">
-    Ver
+  <a href=<%= list_path(@list) %> class="btn btn-outline-info" tabindex="-1" role="button"
+   style="margin-left:200px;margin-right:200px  ">
+    Voltar
   </a>
-
-
-  <%= link_to 'Voltar', :back %>
 
 </div>

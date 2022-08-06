@@ -1,0 +1,45 @@
+<% unless @tasks.blank? %>
+  <h1>Tarefas</h1>
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">STATUS</th>
+        <th scope="col">DESCRIÇÃO</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= image_tag  color_status(task.done), with: 25, height: 25 %></td>
+          <td><%= link_to task.desscription, [@list, task] %></td>
+          <td>
+            <a class="btn btn-outline-dark" data-method="patch" 
+               href=<%= "#{@list.id}/tasks/#{task.id}/#{action_task(task.done)}" %> role="button">
+              <%= frase_option_task(task.done)%>
+            </a>
+          </td>
+          <td>
+            <a class="btn btn-primary" href=<%= edit_list_task_path(@list, task) %> role="button">
+              Editar
+            </a>
+          </td>
+          <td>
+            <a class="btn btn-danger" role="button" data-confirm="Are you sure?" rel="nofollow" 
+               data-method="delete" href=<%= list_task_path(@list, task) %> >
+                Excluir
+            </a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div style="text-align:center"> Não há tarefas criadas!</div>
+<% end %>
+
+<br><br>
