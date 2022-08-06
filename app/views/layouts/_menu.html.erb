@@ -1,9 +1,10 @@
 <nav class="nav justify-content-center" style="margin-top:30px;">
   <a class="btn btn-outline-info me-2" role="buttom" type="button" href="/">Home</a>
-  <a class="btn btn-outline-dark me-2" role="buttom" type="button" href="/list/open">Abertas</a>
-  <a class="btn btn-outline-dark me-2" role="buttom" type="button" href="/list/finishedies">Finalizadas</a>
-  <a class="btn btn-outline-dark me-2" role="buttom" type="button" href="/users/edit">Eu</a>
-  <a class="btn btn-outline-dark me-2" role="buttom" type="button" data-method="delete" href="/users/sign_out">Sair</a>
+  <a class="btn btn-outline-dark me-2" role="buttom" type="button" href=<%= list_open_path %>>Abertas</a>
+  <a class="btn btn-outline-dark me-2" role="buttom" type="button" href=<%= list_finishedies_path %>>Finalizadas</a>
+  <a class="btn btn-outline-dark me-2" role="buttom" type="button" href=<%= edit_user_registration_path %>>Eu</a>
+  <a class="btn btn-outline-dark me-2" role="buttom" type="button" 
+     data-method="delete" href=<%= destroy_user_session_path %>>Sair</a>
 </nav>
 
 <%# /users/edit %>

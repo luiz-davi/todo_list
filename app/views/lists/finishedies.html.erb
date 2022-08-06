@@ -1,6 +1,6 @@
 <div style="margin:50px;text-align:center">
   <h1>Afazeres Finalizados</h1>
-  <a href="/lists/new" class="btn btn-outline-success" tabindex="-1" role="button">
+  <a href=<%= new_list_path %> class="btn btn-outline-success" tabindex="-1" role="button">
     Nova Lista
   </a><br><br>
   <% unless @finishedies.blank? %>
@@ -24,16 +24,17 @@
             <td><%= image_tag  color_status(list.finished), with: 25, height: 25 %></td>
             <td><%= list.tasks.size %></td>
             <td>
-              <a href=<%="/lists/#{list.id}/enable"%>  data-confirm="Tem certeza?" data-method="patch" 
+              <a href=<%= list_enable_path(list) %>  data-confirm="Tem certeza?" data-method="patch" 
                 class="btn btn-outline-warning" tabindex="-1" role="button">
                 Reativar lista
               </a>
             </td>
             <td>
-              <a class="btn btn-primary" href=<%="/lists/#{list.id}/edit"%> role="button">Editar</a>
+              <a class="btn btn-primary" href=<%= edit_list_path(list) %> role="button">Editar</a>
             </td>            
             <td>
-              <a class="btn btn-danger" role="button" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href=<%="/lists/#{list.id}"%>>
+              <a class="btn btn-danger" role="button" data-confirm="Are you sure?" rel="nofollow" 
+                 data-method="delete" href=<%= list_path(list) %> >
                 Excluir
               </a>
             </td>
