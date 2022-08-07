@@ -9,8 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-
+  <body class="d-flex flex-column min-vh-100">
     <% if notice %>
       <div id="notice_wrapper">
           <p class="notice"><%= notice %></p>
@@ -27,5 +26,6 @@
 
     <%= yield %>
 
+    <%= render 'layouts/footer' %>
   </body>
 </html>
